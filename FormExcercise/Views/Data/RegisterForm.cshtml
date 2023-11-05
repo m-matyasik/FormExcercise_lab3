@@ -1,0 +1,22 @@
+﻿@model Data
+@{
+    ViewData["Title"] = "Register Form";
+ }
+    @section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+@using (Html.BeginForm("RegisterForm", "Data", FormMethod.Post))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <p>Name: </p>       @Html.TextBoxFor(m => m.Name)
+    <p>Surname: </p>    <p>@Html.TextBoxFor(m => m.Surname)</p>
+    <p>Email: </p>      <p>@Html.TextBoxFor(m => m.Email)</p>
+    <p>Password: </p>   <p>@Html.PasswordFor(m => m.Password)</p>
+    <p>Repeat Pass: </p>  <p>@Html.PasswordFor(m => m.ConfirmPassword)</p>
+    <p>Phone:  </p>     <p>@Html.TextBoxFor(m => m.Phone)</p>
+    <p>Age: </p>        <p>@Html.TextBoxFor(m => m.Age)</p>
+    <select asp-for="City" asp-items="Html.GetEnumSelectList<Data.Cities>()"></select><br /><br />
+    <input type="submit" value="Register" />
+    <input type="reset" name="Resetbtn" onclick="onreset" />
+}
